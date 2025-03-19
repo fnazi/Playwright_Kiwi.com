@@ -1,0 +1,27 @@
+name: Test Suite
+
+on: [push, pull_request]  #trigger events
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:   #use playwright base image
+      image: mcr.microsoft.com/playwright/python:v1.42.0-jammy
+      
+    steps: #steps to run(sequential operations)
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        playwright install chromium
+    
+    - name: Run tests
+      run: pytest -v --html=report.html --self-contained-html
+    
+    - name: Upload report
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-report
+        path: report.html
