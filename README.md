@@ -1,4 +1,5 @@
 # Kiwi.com Flight Search Automation
+```txt
 @basic_search
 Feature: Basic search form
     Scenario: T1 - One way flight search
@@ -10,6 +11,7 @@ Feature: Basic search form
         And Uncheck the `Check accommodation with booking.com` option
         And Click the search button
         Then I am redirected to search results page
+```
 
 ## Project Overview
 This test automation framework validates the basic flight search functionality on Kiwi.com using:
@@ -89,6 +91,7 @@ docker build -t kiwi-tests .
 docker run -it --rm kiwi-tests
 ````
 ## 4.  CI/CD Setup (GitHub Actions)
+```txt
 CI Configuration (.github/workflows/tests.yml)
 
 GitHub Actions Flow
@@ -96,3 +99,4 @@ GitHub Actions Flow
 2.Actions automatically runs tests
 3.View results in GitHub's "Actions" tab
 4.Download report from Artifacts
+```
